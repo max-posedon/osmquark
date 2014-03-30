@@ -18,7 +18,7 @@ void OsmWindow::paintEvent(QPaintEvent *event)
     qDebug() << i++ << event->rect();
 
     int n = 1 << zoom;
-    int nx = qMax(n, (event->rect().width()-1)/256+1);
+    int nx = (event->rect().width()-1)/256+1;
     int ny = qMin(n, (event->rect().height()-1)/256+1);
 
     QPainter painter(this);
