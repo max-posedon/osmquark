@@ -10,7 +10,7 @@ class OsmWindow: public QWidget
     Q_OBJECT
 
 public:
-    OsmWindow(QWidget *parent = 0, int zoom = 0);
+    OsmWindow(QWidget *parent = 0, int zoom = 0, int x = 0, int y = 0);
 
 protected:
     virtual void paintEvent(QPaintEvent *event);
@@ -18,6 +18,8 @@ protected:
 private:
     OsmTiles *tiles;
     int zoom;
+    int x;
+    int y;
 };
 
 #endif
