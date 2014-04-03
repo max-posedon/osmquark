@@ -13,13 +13,17 @@ public:
     OsmWindow(QWidget *parent = 0, int zoom = 0, int x = 0, int y = 0);
 
 protected:
-    virtual void paintEvent(QPaintEvent *event);
+    virtual void paintEvent(QPaintEvent *ev);
+    virtual void mouseMoveEvent(QMouseEvent *ev);
+    virtual void mousePressEvent(QMouseEvent *ev);
 
 private:
     OsmTiles *tiles;
     int zoom;
     int x;
     int y;
+    int press_x;
+    int press_y;
 };
 
 #endif
