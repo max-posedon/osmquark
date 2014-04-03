@@ -49,3 +49,21 @@ void OsmWindow::mousePressEvent(QMouseEvent *ev)
     } else
         ev->ignore();
 };
+
+void OsmWindow::wheelEvent(QWheelEvent *ev)
+{
+    if (-60 < ev->angleDelta().y() && ev->angleDelta().y() < 60)
+        ev->ignore();
+    else {
+        if (ev->angleDelta().y() > 0) {
+            zoom++;
+            x *= 2;
+            y *= 2;
+        } else {
+            zoom--;
+            x /= 2;
+            y /= 2;
+        }
+        update();
+    };
+}

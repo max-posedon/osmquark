@@ -16,6 +16,7 @@ protected:
     virtual void paintEvent(QPaintEvent *ev);
     virtual void mouseMoveEvent(QMouseEvent *ev);
     virtual void mousePressEvent(QMouseEvent *ev);
+    virtual void wheelEvent(QWheelEvent *ev);
 
 private:
     OsmTiles *tiles;
