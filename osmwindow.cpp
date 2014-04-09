@@ -10,6 +10,7 @@
 OsmWindow::OsmWindow(QWidget *parent, int zoom, int x, int y) : QWidget(parent), zoom(zoom), x(x), y(y)
 {
     tiles = new OsmTiles(this);
+    setAttribute(Qt::WA_AcceptTouchEvents);
 };
 
 void OsmWindow::paintEvent(QPaintEvent *ev)
@@ -65,5 +66,35 @@ void OsmWindow::wheelEvent(QWheelEvent *ev)
             y /= 2;
         }
         update();
-    };
-}
+    }
+};
+
+void OsmWindow::tabletEvent(QTabletEvent *ev) {
+    qDebug() << ev;
+    ev->ignore();
+};
+
+void OsmWindow::touchEvent(QTouchEvent *ev) {
+    qDebug() << ev;
+    ev->ignore();
+};
+
+bool OsmWindow::event(QEvent *ev)
+{
+    switch (ev->type()) {
+        case QEvent::TouchBegin:
+        case QEvent::TouchUpdate:
+        case QEvent::TouchEnd:
+        case QEvent::TouchCancel:
+        {
+            touchEvent((QTouchEvent*)ev);
+            return ev->isAccepted();
+            break;
+        }
+        default:
+        {
+            return QWidget::event(ev);
+            break;
+        }
+    }
+};

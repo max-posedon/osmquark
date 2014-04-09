@@ -4,6 +4,7 @@
 #include <QtWidgets/QWidget>
 
 class OsmTiles;
+class QTouchEvent;
 
 class OsmWindow: public QWidget
 {
@@ -17,6 +18,9 @@ protected:
     virtual void mouseMoveEvent(QMouseEvent *ev);
     virtual void mousePressEvent(QMouseEvent *ev);
     virtual void wheelEvent(QWheelEvent *ev);
+    virtual void tabletEvent(QTabletEvent *ev);
+    virtual void touchEvent(QTouchEvent *ev);
+    virtual bool event(QEvent *ev);
 
 private:
     OsmTiles *tiles;
