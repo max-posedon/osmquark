@@ -1,13 +1,14 @@
 #include "osmtiles.h"
 
 #include <QtCore/QDebug>
+#include <QtCore/QStandardPaths>
 #include <QtCore/QUrl>
 #include <QtNetwork/QNetworkReply>
 #include <QtNetwork/QNetworkRequest>
 
 OsmTiles::OsmTiles(QObject *parent) : QObject(parent)
 {
-    cache.setCacheDirectory("cache");
+    cache.setCacheDirectory(QStandardPaths::writableLocation(QStandardPaths::CacheLocation));
     manager.setCache(&cache);
     connect(&manager, &QNetworkAccessManager::finished, this, &OsmTiles::downloadFinished);
 }
