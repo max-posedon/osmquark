@@ -11,6 +11,12 @@ class OsmWindow: public QWidget
     Q_OBJECT
 
 public:
+    enum ZoomLevel {
+        Minimal = 0,
+        Maximum = 16
+    };
+
+public:
     OsmWindow(QWidget *parent = 0, int zoom = 0, int x = 0, int y = 0);
 
 protected:

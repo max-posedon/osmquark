@@ -56,11 +56,11 @@ void OsmWindow::wheelEvent(QWheelEvent *ev)
     if (-60 < ev->angleDelta().y() && ev->angleDelta().y() < 60)
         ev->ignore();
     else {
-        if (ev->angleDelta().y() > 0) {
+        if (ev->angleDelta().y() > 0 && zoom < ZoomLevel::Maximum) {
             zoom++;
             x *= 2;
             y *= 2;
-        } else {
+        } else if (zoom > ZoomLevel::Minimal) {
             zoom--;
             x /= 2;
             y /= 2;
