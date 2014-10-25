@@ -7,12 +7,12 @@ int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 
-    app.setApplicationName("osmquark");
-    app.setApplicationVersion("1.0");
-    app.setOrganizationName("max_posedon");
-    app.setOrganizationDomain("maxposedon.org");
+    QApplication::setApplicationName(APP_NAME);
+    QApplication::setApplicationVersion(APP_VERSION);
+    QApplication::setOrganizationName("max_posedon");
+    QApplication::setOrganizationDomain("maxposedon.org");
 
-    app.setAttribute(Qt::AA_SynthesizeMouseForUnhandledTouchEvents, false);
+    QApplication::setAttribute(Qt::AA_SynthesizeMouseForUnhandledTouchEvents, false);
 
     QStringList args = app.arguments();
     int zoom = args.size() > 1 ? args.at(1).toInt() : 0;

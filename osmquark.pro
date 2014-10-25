@@ -6,8 +6,11 @@ TEMPLATE = app
 TARGET = osmquark
 INCLUDEPATH += .
 QT = core gui network widgets
+VERSION = 0.0.1
 CONFIG += debug c++11
 
 # Input
+DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+DEFINES += APP_NAME=\\\"$$TARGET\\\"
 HEADERS += osmwindow.h osmtiles.h
 SOURCES += osmwindow.cpp osmtiles.cpp main.cpp
