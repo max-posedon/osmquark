@@ -24,3 +24,6 @@ Makefile
 *.out
 *.app
 osmquark
+
+# Runtime Directories
+cache

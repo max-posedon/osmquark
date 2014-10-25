@@ -2,6 +2,7 @@
 #define OSMTILES_H
 
 #include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkDiskCache>
 #include <QtGui/QImage>
 
 typedef QMap<int, QImage> TilesY;
@@ -22,6 +23,7 @@ private slots:
 
 private:
     QNetworkAccessManager manager;
+    QNetworkDiskCache cache;
     TilesZoomXY tiles;
 };
 

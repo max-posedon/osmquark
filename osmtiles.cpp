@@ -7,6 +7,8 @@
 
 OsmTiles::OsmTiles(QObject *parent) : QObject(parent)
 {
+    cache.setCacheDirectory("cache");
+    manager.setCache(&cache);
     connect(&manager, &QNetworkAccessManager::finished, this, &OsmTiles::downloadFinished);
 }
 
