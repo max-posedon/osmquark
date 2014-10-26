@@ -1,4 +1,6 @@
+#include <QtCore/QLibraryInfo>
 #include <QtCore/QTimer>
+#include <QtCore/QTranslator>
 #include <QtCore/QCommandLineParser>
 #include <QtWidgets/QApplication>
 
@@ -13,6 +15,13 @@ int main(int argc, char **argv)
     QCoreApplication::setOrganizationName("max_posedon");
     QCoreApplication::setOrganizationDomain("maxposedon.org");
 
+    QTranslator qtTranslator;
+    qtTranslator.load("qt_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    app.installTranslator(&qtTranslator);
+    QTranslator appTranslator;
+    appTranslator.load(QCoreApplication::applicationName() + "_" + QLocale::system().name());
+    app.installTranslator(&appTranslator);
+
     QCoreApplication::setAttribute(Qt::AA_SynthesizeMouseForUnhandledTouchEvents, false);
 
     QCommandLineOption zoomOption(QStringList() << "z" << "zoom", QObject::tr("Zoom Level"), "zoom", "0");
@@ -20,7 +29,7 @@ int main(int argc, char **argv)
     QCommandLineOption yOption("y", QObject::tr("Y offset"), "y", "0");
 
     QCommandLineParser parser;
-    parser.setApplicationDescription("very simple open street map app");
+    parser.setApplicationDescription(QObject::tr("very simple open street map app"));
     parser.addHelpOption();
     parser.addVersionOption();
     parser.addOption(zoomOption);

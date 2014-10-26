@@ -4,19 +4,24 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="main.cpp" line="18"/>
+        <location filename="main.cpp" line="27"/>
         <source>Zoom Level</source>
         <translation>Зуум</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="19"/>
+        <location filename="main.cpp" line="28"/>
         <source>X offset</source>
         <translation>X-смещение</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="20"/>
+        <location filename="main.cpp" line="29"/>
         <source>Y offset</source>
         <translation>Y-смещение</translation>
+    </message>
+    <message>
+        <location filename="main.cpp" line="32"/>
+        <source>very simple open street map app</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
