@@ -17,6 +17,7 @@
 
 # Generated files
 moc_*.cpp
+*.qm
 Makefile
 
 # Executables

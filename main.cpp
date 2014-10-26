@@ -16,8 +16,8 @@ int main(int argc, char **argv)
     QCoreApplication::setAttribute(Qt::AA_SynthesizeMouseForUnhandledTouchEvents, false);
 
     QCommandLineOption zoomOption(QStringList() << "z" << "zoom", QObject::tr("Zoom Level"), "zoom", "0");
-    QCommandLineOption xOption("x", QObject::tr("main", "X offset"), "x", "0");
-    QCommandLineOption yOption("y", QObject::tr("main", "Y offset"), "y", "0");
+    QCommandLineOption xOption("x", QObject::tr("X offset"), "x", "0");
+    QCommandLineOption yOption("y", QObject::tr("Y offset"), "y", "0");
 
     QCommandLineParser parser;
     parser.setApplicationDescription("very simple open street map app");

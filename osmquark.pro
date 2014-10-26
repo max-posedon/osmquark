@@ -14,3 +14,4 @@ DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 DEFINES += APP_NAME=\\\"$$TARGET\\\"
 HEADERS += osmwindow.h osmtiles.h
 SOURCES += osmwindow.cpp osmtiles.cpp main.cpp
+TRANSLATIONS = osmquark_ru.ts osmquark_en.ts
