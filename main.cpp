@@ -10,8 +10,8 @@ int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 
-    QCoreApplication::setApplicationName(APP_NAME);
-    QCoreApplication::setApplicationVersion(APP_VERSION);
+    QCoreApplication::setApplicationName(QT_STRINGIFY(APP_NAME));
+    QCoreApplication::setApplicationVersion(QT_STRINGIFY(APP_VERSION));
     QCoreApplication::setOrganizationName("max_posedon");
     QCoreApplication::setOrganizationDomain("maxposedon.org");
 
@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     qtTranslator.load("qt_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     app.installTranslator(&qtTranslator);
     QTranslator appTranslator;
-    appTranslator.load(QCoreApplication::applicationName() + "_" + QLocale::system().name());
+    appTranslator.load(QString(":/tr/") + QCoreApplication::applicationName() + "_" + QLocale::system().name());
     app.installTranslator(&appTranslator);
 
     QCoreApplication::setAttribute(Qt::AA_SynthesizeMouseForUnhandledTouchEvents, false);

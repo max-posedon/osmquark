@@ -19,6 +19,8 @@
 moc_*.cpp
 *.qm
 Makefile
+osmquark_tr.qrc
+qrc_*.cpp
 
 # Executables
 *.exe

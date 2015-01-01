@@ -10,8 +10,30 @@ VERSION = 0.0.1
 CONFIG += debug c++11
 
 # Input
-DEFINES += APP_VERSION=\\\"$$VERSION\\\"
-DEFINES += APP_NAME=\\\"$$TARGET\\\"
+DEFINES += APP_VERSION=$$VERSION
+DEFINES += APP_NAME=$$TARGET
 HEADERS += osmwindow.h osmtiles.h
 SOURCES += osmwindow.cpp osmtiles.cpp main.cpp
-TRANSLATIONS = osmquark_ru.ts osmquark_en.ts
+LANGUAGES = ru en
+
+for (lang, LANGUAGES) {
+    TRANSLATIONS += $${TARGET}_$${lang}.ts
+    TRANSBINARIES += $${TARGET}_$${lang}.qm
+
+    lupdate_$${lang}.target = $${TARGET}_$${lang}.ts
+    lupdate_$${lang}.depends = $$SOURCES $$HEADERS $$FORMS
+    lupdate_$${lang}.commands = lupdate . -locations absolute -ts $${TARGET}_$${lang}.ts
+    QMAKE_EXTRA_TARGETS += lupdate_$${lang}
+}
+
+lrelease.input = TRANSLATIONS
+lrelease.output = ${QMAKE_FILE_BASE}.qm
+lrelease.commands = lrelease ${QMAKE_FILE_IN} -qm ${QMAKE_FILE_BASE}.qm
+lrelease.CONFIG += no_link
+QMAKE_EXTRA_COMPILERS += lrelease
+
+lresource.target = $${TARGET}_tr.qrc
+lresource.depends = $${TRANSBINARIES}
+lresource.commands = ( echo \'<!DOCTYPE RCC><RCC version=\"1.0\">\' ; echo \'<qresource prefix=\"/tr\">\' ; for trb in $$TRANSBINARIES; do echo -n \'<file>\'; echo -n \$\${trb}; echo \'</file>\'; done ; echo \'</qresource>\' ; echo \'</RCC>\' ) > $$lresource.target
+QMAKE_EXTRA_TARGETS += lresource
+RESOURCES += $$lresource.target
